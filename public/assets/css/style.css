@@ -1,0 +1,51 @@
+@media screen and (max-width: 480px) {
+    .nav {
+       display: none;
+     }
+   }
+
+.nav {
+    position: relative;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    padding: 20px 0 ;
+    background-color: white;
+}
+.nav ul li {
+    margin-top: 10px;
+    list-style: none;
+    font-weight: 600;
+}
+.nav .grup-button button {
+    background-color: red;
+    border: none;
+    width: 100px;
+    height: 40px;
+    border-radius: 50px;
+    color: white;
+    font-weight: 700;
+}
+
+/* mobile nav */
+.mobile-sm {
+    display: flex;
+    padding: 20px 0 ;
+    justify-content: center;
+    align-items: center;
+    gap: 30px;
+    background-color: white;
+}
+.mobile-sm .grup-button button {
+    background-color: red;
+    border: none;
+    width: 100px;
+    height: 40px;
+    border-radius: 50px;
+    color: white;
+    font-weight: 700;
+}
+
+
+
+/* end navbar */
