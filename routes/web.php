@@ -1,11 +1,13 @@
 <?php
 
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\StudioController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
     return view('welcome');
 });
+Route::get('/studio', [StudioController::class, 'studio'])->name('studio_app');
 
 Route::get('/dashboard', function () {
     return view('dashboard');
