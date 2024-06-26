@@ -1,0 +1,30 @@
+.rounded-lg{
+    border-radius: 47px;
+}
+.px-1 {
+    padding-right: 0.5rem;
+    padding-left: 0.5rem;
+}
+.py-1 {
+    padding-top: 1.5rem;
+    padding-bottom: 1.5rem;
+}
+.px-2 {
+    padding-right: 1.5rem;
+    padding-left: 1.5rem;
+}
+.px-small {
+    padding-right: 2rem;
+    padding-left: 2rem;
+}
+.bg-merahTua {
+    background-color: #761208;
+}
+.text-putih {
+    color: white;
+}
+.border-none {
+   border: none;
+}
+
+

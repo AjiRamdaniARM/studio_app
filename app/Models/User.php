@@ -20,7 +20,9 @@ class User extends Authenticatable
         'name',
         'email',
         'password',
+        'role'
     ];
+
 
     /**
      * The attributes that should be hidden for serialization.
@@ -44,4 +46,14 @@ class User extends Authenticatable
             'password' => 'hashed',
         ];
     }
+
+
+    public function hasRole($role)
+    {
+        // Assuming you have a roles relationship
+        return $this->roles()->where('name', $role)->exists();
+    }
+
+
+
 }

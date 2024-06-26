@@ -6,14 +6,34 @@
     </div>
     <ul class="d-flex gap-5 inter-bold  ">
         <li><a class="icon-link-hover link-dark" href="{{url('/')}}">Home</a> </li>
-        <li><a class="icon-link-hover link-dark" href="{{ route('studio_app')}}">Photo Studio</a></li>
-        <li><a class="icon-link-hover link-dark" href="">Location</a></li>
+        <li><a class="icon-link-hover link-dark" href="#photo">Photo Studio</a></li>
+        <li><a class="icon-link-hover link-dark" href="#location">Location</a></li>
     </ul>
 
     <div class="grup-button">
-        <a href="{{ route('login')}}">
+        @auth
+        <div class="dropdown">
+            <a style="border: 2px solid #a30000; border-radius:100px" class="btn  dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                {{ auth()->user()->name }}
+            </a>
+
+            <ul class="dropdown-menu">
+              <li><a class="dropdown-item" href="{{route('dashboard')}}">Dashboard</a></li>
+              <li><a class="dropdown-item" href="{{route('studio.profile')}}">Profile</a></li>
+
+              <form action="{{ route('logout') }}" method="post">
+                @csrf
+                <input name="_method" type="hidden" value="POST">
+                <li><button type="submit" class="dropdown-item bg-danger text-light m-3 ">Logout</button></li>
+            </form>
+            </ul>
+          </div>
+          @else
+          <a href="{{ route('login')}}">
             <button >SIGN IN</button>
         </a>
+        @endauth
+
 
     </div>
 </nav>

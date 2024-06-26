@@ -2,7 +2,30 @@
     .nav {
        display: none;
      }
+     .judulDetail {
+        font-size: 50px;
+    }
    }
+   @media screen and (max-width: 768px) {
+    .nav {
+       display: none;
+     }
+     .judulDetail {
+        font-size: 50px;
+    }
+   }
+   @media screen and (min-width: 1024px) {
+    .judulDetail {
+        font-size: 100px;
+    }
+   }
+   @media screen and (min-width: 1280px) {
+    .judulDetail {
+        font-size: 100px;
+    }
+   }
+
+
 
 .nav {
     position: relative;
@@ -49,3 +72,15 @@
 
 
 /* end navbar */
+
+.content {
+    position: relative;
+    padding-top: 50px;
+}
+.carousel-item img {
+    height: 40em;
+    background-size: cover;
+    background-repeat: no-repeat;
+    object-fit: cover;
+    border-radius: 20px;
+  }
