@@ -7,7 +7,7 @@
 
     </div>
     <ul class="d-flex gap-5 inter-bold  ">
-        <li><a class="icon-link-hover link-dark" href="">Home</a> </li>
+        <li><a class="icon-link-hover link-dark" href="{{url('/')}}">Home</a> </li>
         <li><a class="icon-link-hover link-dark" href="#photo">Photo Studio</a></li>
         <li><a class="icon-link-hover link-dark" href="#location">Location</a></li>
     </ul>
@@ -51,9 +51,27 @@
             <button >SIGN UP</button>
         </a>
      </div>
-     <div class="humburger">
+     <button class="humburger" data-bs-toggle="modal" data-bs-target="#exampleModal" style="border: none; background:white">
         <img width="20" src="assets/img/menu.png" alt="humburger-icon">
-     </div>
+     </button>
+
+     <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h1 class="modal-title fs-5" id="exampleModalLabel">Menu Mobile</h1>
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+             <div class="d-flex justify-content-center items-align-center gap-4">
+                <div><a class="icon-link-hover link-dark" href="{{url('/')}}">Home</a></div>
+                <div><a class="icon-link-hover link-dark" href="#photo">Photo Studio</a></div>
+                <div><a class="icon-link-hover link-dark" href="#location">Location</a></div>
+             </div>
+            </div>
+          </div>
+        </div>
+      </div>
 </div>
 
 <style>

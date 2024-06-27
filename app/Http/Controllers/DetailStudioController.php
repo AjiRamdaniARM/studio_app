@@ -57,7 +57,6 @@ class DetailStudioController extends Controller
             'id_studio' => $request->input('id_studio'),
         ]);
         $produk -> save();
-
          return redirect()->back()->with('success', 'Data berhasil di edit kawan');
     }
 

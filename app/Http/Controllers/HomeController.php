@@ -27,17 +27,15 @@ class HomeController extends Controller
         $getData = Produks::where('id_studio', $id)->get();
         return view('user.detail', compact('data','getData','get'));
     }
-
     public function informasi($id) {
+        $getData = Produks::where('id', $id)->first();
         $data = DB::table('studios')
         ->join('tempat_studios', 'studios.id_studio', '=', 'tempat_studios.id')
-        ->where('studios.id_studio', $id)
+        ->where('studios.id_studio', $getData->id_studio)
         ->select('tempat_studios.*', 'studios.*', 'tempat_studios.judul as judulStudios')
         ->first();
 
-        $get = tempatStudio::where('id', $id)->first();
-        $getData = Produks::where('id', $id)->first();
-        return view('user.informasiStudio',compact('data','getData','get'));
+        return view('user.informasiStudio',compact('data','getData'));
     }
 
 }

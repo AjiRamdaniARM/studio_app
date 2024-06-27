@@ -227,15 +227,22 @@ p {
                         <!-- User profile and search -->
                         <!-- ============================================================== -->
                         <li class="nav-item dropdown">
-                            <button id="menu-button" aria-expanded="true" aria-haspopup="true" class="btn btn-danger text-white"  role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                             {{$user->name}}
-                            </button>
 
 
-                            <ul class="dropdown-menu dropdown-menu-end user-dd animated" aria-labelledby="navbarDropdown">
-                                <a class="dropdown-item" href="javascript:void(0)"><i class="ti-user m-r-5 m-l-5"></i>
-                                    Logout</a>
-                            </ul>
+                            <form action="{{ route('logout') }}" method="post">
+                                @csrf
+                                <button id="menu-button" aria-expanded="true" aria-haspopup="true" class="btn btn-danger text-white"  role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                    {{$user->name}}
+                                   </button>
+                                {{-- <input name="_method" type="hidden" value="POST">
+                                <li><button type="submit" class="dropdown-item bg-danger text-light m-3 ">Logout</button></li>
+                                 --}}
+                                 <ul class="dropdown-menu dropdown-menu-end user-dd animated" aria-labelledby="navbarDropdown">
+                                    <button type="submit" class="dropdown-item" href="javascript:void(0)"><i class="ti-user m-r-5 m-l-5"></i>
+                                        Logout</button>
+                                </ul>
+                            </form>
+
                         </li>
                         <!-- ============================================================== -->
                         <!-- User profile and search -->
@@ -259,12 +266,14 @@ p {
                         <li class="sidebar-item"> <a class="sidebar-link waves-effect waves-dark sidebar-link"
                                 href="{{url('dashboard')}}" aria-expanded="false"><i class="mdi mdi-view-dashboard"></i><span
                                     class="hide-menu">Dashboard</span></a></li>
+                                    @if(Auth::check() && (Auth::user()->role == 'superadmin' || Auth::user()->role == 'admin'))
                         <li class="sidebar-item"> <a class="sidebar-link waves-effect waves-dark sidebar-link"
                                 href="{{route('studio.admin')}}" aria-expanded="false"><i
                                     class="mdi mdi-account-network"></i><span class="hide-menu">Studio</span></a></li>
                         <li class="sidebar-item"> <a class="sidebar-link waves-effect waves-dark sidebar-link"
                                 href="{{route('detail.studio')}}" aria-expanded="false"><i class="mdi mdi-border-all"></i><span
                                     class="hide-menu">Detail Studio</span></a></li>
+                                    @endif
 
                                     @if(Auth::check() && Auth::user()->role == 'superadmin')
                                     <li class="sidebar-item">
