@@ -54,7 +54,7 @@
                                 </div>
 
                                 <div class="form-floating ">
-                                    <textarea class="form-control" name="deskripsi" placeholder="Leave a comment here" id="floatingTextarea"></textarea>
+                                    <textarea class="form-control" ty name="deskripsi" placeholder="Leave a comment here" id="floatingTextarea"></textarea>
                                     <label for="floatingTextarea">Deskripsi Studio</label>
                                   </div>
                                   <br>

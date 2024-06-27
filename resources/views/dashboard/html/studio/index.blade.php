@@ -2,7 +2,6 @@
 @section('dashboardContent')
 
 
-
         <div class="">
             <div class="page-breadcrumb">
                 <div class="row align-items-center">
@@ -82,7 +81,12 @@
                                                 <td><img style="width: 100px; border-radius:10px;" src="{{asset('assets/img/'.$studios->image)}}" alt=""></td>
                                                 <td>{{$studios->created_at}}</td>
                                                 <td>
-                                                        <button class="btn btn-danger text-white fw-bold" data-bs-toggle="modal" data-bs-target="#staticBackdrop{{$studios->id}}">Delete</button>
+                                                    <form action="{{ url('studio/admin/delete/'.$studios->id) }}" >
+                                                        @csrf
+                                                        @method('DELETE')
+                                                        <button class="btn bg-danger text-white rounded" type="submit">Delete</button>
+                                                    </form>
+                                                    <br>
                                                         <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#staticBackdrop{{$studios->id}}">Edit</button>
                                                         {{-- modal button --}}
                                                         <div class="modal fade" id="staticBackdrop{{$studios->id}}" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
@@ -93,7 +97,7 @@
                                                                   <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                                                 </div>
                                                                 <div class="modal-body">
-                                                                  <form action="{{route('studio.edit.admin', ['id', $studios->id])}}" method="POST">
+                                                                  <form action="{{url('studio/admin/edit/'.$studios->id)}}" method="POST" enctype="multipart/form-data">
                                                                     @csrf
                                                                     <input type="text" class="form-control" id="floatingInput" name="judul" value="{{$studios->judul}}" required>
                                                                     <br>

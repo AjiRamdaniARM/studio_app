@@ -234,11 +234,7 @@ p {
 
                             <ul class="dropdown-menu dropdown-menu-end user-dd animated" aria-labelledby="navbarDropdown">
                                 <a class="dropdown-item" href="javascript:void(0)"><i class="ti-user m-r-5 m-l-5"></i>
-                                    My Profile</a>
-                                <a class="dropdown-item" href="javascript:void(0)"><i class="ti-wallet m-r-5 m-l-5"></i>
-                                    My Balance</a>
-                                <a class="dropdown-item" href="javascript:void(0)"><i class="ti-email m-r-5 m-l-5"></i>
-                                    Inbox</a>
+                                    Logout</a>
                             </ul>
                         </li>
                         <!-- ============================================================== -->
@@ -269,6 +265,16 @@ p {
                         <li class="sidebar-item"> <a class="sidebar-link waves-effect waves-dark sidebar-link"
                                 href="{{route('detail.studio')}}" aria-expanded="false"><i class="mdi mdi-border-all"></i><span
                                     class="hide-menu">Detail Studio</span></a></li>
+
+                                    @if(Auth::check() && Auth::user()->role == 'superadmin')
+                                    <li class="sidebar-item">
+                                        <a class="sidebar-link waves-effect waves-dark sidebar-link" href="{{ route('manage.user') }}" aria-expanded="false">
+                                            <i class="mdi mdi-border-all"></i>
+                                            <span class="hide-menu">Manage User</span>
+                                        </a>
+                                    </li>
+                                @endif
+
                         <li class="sidebar-item"><a class="sidebar-link waves-effect waves-dark sidebar-link"
                                 href="{{route('studio.profile')}}" aria-expanded="false"><i
                                 class="mdi mdi-account-network"></i><span

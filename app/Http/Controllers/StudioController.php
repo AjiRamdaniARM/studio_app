@@ -14,8 +14,4 @@ class StudioController extends Controller
         return view('user.studio', compact('user', 'data'));
     }
 
-    public function index() {
-        return view('user.detail');
-    }
-
 }

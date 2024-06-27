@@ -25,7 +25,7 @@ class DetailStudioController extends Controller
         $data = DB::table('studios')
         ->join('tempat_studios', 'studios.id_studio', '=', 'tempat_studios.id')
         ->where('tempat_studios.id', $id)
-        ->select('studios.*', 'tempat_studios.*')
+        ->select('studios.*', 'tempat_studios.*', 'tempat_studios.id as id_studio')
         ->first();
         $user = Auth::user();
         $datas = Produks::where('id_studio',$id)->get();
@@ -47,16 +47,20 @@ class DetailStudioController extends Controller
         return redirect()->back()->with('success', 'data detail produk berhasil di upload!!');
     }
 
-    public function updatePost (Request $request, $id) {
+    public function updatePost(Request $request, $id) {
+        // Cari produk dan update
         $produk = Produks::findOrFail($id);
-        $produk->nama_produk = $request->input('name_produk');
-        $produk->harga = $request->input('harga_produk');
-        $produk->deksripsi = $request->input('deskripsi_produk');
-        $produk->id_studio = $request->input('id_studio');
+        $produk ->update ([
+            'nama_produk' => $request->input('name_produk'),
+            'harga' => $request->input('harga_produk'),
+            'deksripsi' => $request->input('deskripsi_produk'),
+            'id_studio' => $request->input('id_studio'),
+        ]);
         $produk -> save();
-        return redirect()->back()->with('success','data berhasil di edit kawan');
 
+         return redirect()->back()->with('success', 'Data berhasil di edit kawan');
     }
+
 
     public function delete ($id) {
         $getData = Produks::findOrFail($id);

@@ -10,9 +10,12 @@ use App\Http\Controllers\StudioController;
 use App\Http\Middleware\RoleMiddleware;
 use App\Models\User;
 use Illuminate\Support\Facades\Route;
+use App\Http\Middleware\SuperadminMiddleware;
+
 
 Route::get('/', [HomeController::class, 'index']);
 Route::get('/studio', [StudioController::class, 'studio'])->name('studio_app');
+Route::get('/detailinformasi{id}', [HomeController::class, 'informasi']);
 Route::get('/detail{id}', [HomeController::class,'detail']);
 // routes/web.php
 Route::get('/user-count', function() {
@@ -24,13 +27,21 @@ Route::get('/user-count', function() {
 //     return view('dashboard.html.index');
 // })->middleware(['auth', 'verified'])->name('dashboard');
 
+Route::middleware([SuperadminMiddleware::class])->group(function () {
+    Route::get('/detail/studio/manageUser', [DashboardController::class, 'manageUser'])->name('manage.user');
+    Route::get('/detail/studio/manageUser/delete/{id}', [DashboardController::class , 'deleteUser']);
+    Route::post('/detail/studio/manageUser/edit/{id}', [DashboardController::class , 'editUser']);
+    Route::post('/detail/studio/manageUser/add', [DashboardController::class , 'addUser']);
+});
+
+
 Route::middleware(['auth','verified'])->group(function () {
     Route::post('detail/studio/image', [DetailStudioController::class, 'image'])->name('image.upload');
     Route::get('detail/studio/data/{id}', [DetailStudioController::class, 'detail'])->name('data.detail');
     Route::get('detail/studio/data/delete/{id}', [DetailStudioController::class, 'delete'])->name('delete.detail');
     Route::post('detail/studio/data/{id}', [DetailStudioController::class, 'updatePost'])->name('data.update');
     Route::get('detail/studio', [DetailStudioController::class, 'index'])->name('detail.studio');
-    Route::get('detail/studio/deleteDetail/{TempatStudios_id}', [DetailStudioController::class, 'deleteDetail'])->name('detail.studio.delete');
+    Route::get('detail/studio/deleteDetail/{id}', [DetailStudioController::class, 'deleteDetail'])->name('detail.studio.delete');
     Route::get('studio/profileView', [ProfileViewController::class, 'index'])->name('studio.profile');
     Route::post('studio/profileView/edit/{name}', [ProfileViewController::class, 'editProfile'])->name('edit.profile');
     Route::get('studio/admin', [StudioAdminController::class, 'index'])->name('studio.admin');

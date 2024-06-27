@@ -8,6 +8,7 @@ use App\Models\User;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Validator;
 
 class StudioAdminController extends Controller
 {
@@ -63,31 +64,18 @@ class StudioAdminController extends Controller
         return redirect()->back()->with('success', 'Studio deleted successfully');
     }
 
-    function editStudio (Request $request, $id) {
-        $studio = Studio::findOrFail($id);
+    function editStudio(Request $request, $id) {
+            $tableData = tempatStudio::findOrFail($id);
+            // Handle file upload
+                $image = $request->file('file');
+                $imageName = time() . '.' . $image->getClientOriginalExtension();
+                $image->move(public_path('assets/img'), $imageName);
 
-        if (!$studio) {
-            // Handle record not found scenario (e.g., redirect with error message)
-            return abort(404);  // Return HTTP 404 Not Found
-        }
+            $tableData->judul = $request->input('judul');
+            $tableData->image = $imageName;
 
+            $tableData->save();
 
-        $validator = $studio->validate($request->all()); // Call validate on the instance
-
-        if ($validator->fails()) {
-            return redirect()->back()->withErrors($validator);  // Handle validation errors
-        }
-
-
-        try {
-            $tableData = Studio::findOrFail($id);  // Find the row to update
-            $tableData->update($request->only($tableData->getFillable()));  // Update using fillable attributes
-        } catch (ModelNotFoundException $e) {
-            return abort(404);  // Handle record not found (HTTP 404)
-        }
-
-          // Update successful, redirect or return success response
-            return redirect()->route('tableData.index')->with('success', 'Data updated successfully!');
-
+        return redirect()->back()->with('success', 'Data updated successfully!');
     }
 }

@@ -205,8 +205,8 @@
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        <tr>
                                             @foreach ($datas as $data )
+                                            <tr>
                                             <td>{{ $loop->iteration }}</td>
                                             <td>{{$data->nama_produk}}</td>
                                             <td>{{$data->harga}}</td>
@@ -216,12 +216,14 @@
                                             <td>
                                                 <div class="grup flex justify-center items-center ">
                                                     <button type="button" data-bs-toggle="modal" tabindex="-1" data-bs-target="#exampleModal{{$data->id}}" class="btn btn-primary" aria-hidden="true">Edit</button>
-                                                       {{-- button modal edit --}}
-                                                        <form class="py-2 action="{{ route('delete.detail', ['id' => $data->id]) }}">
+
+
+                                                        <form class="py-2" action="{{ route('delete.detail', ['id' => $data->id]) }}">
                                                             @csrf
                                                             @method('DELETE')
                                                             <button  type="submit" class="btn btn-danger text-white">Delete</button>
                                                         </form>
+
                                                         <div class="modal fade" id="exampleModal{{$data->id}}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                                                             <div class="modal-dialog">
                                                             <div class="modal-content">
@@ -230,6 +232,7 @@
                                                                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                                                 </div>
                                                                 <div class="modal-body">
+
                                                                     {{-- forms edit --}}
                                                                     <form action="{{route('data.update',['id' => $data->id])}}" method="POST">
                                                                         @csrf
@@ -258,7 +261,7 @@
                                                                             name="deskripsi_produk"
                                                                             placeholder="Leave a comment here"
                                                                             id="floatingTextarea"
-                                                                            >{{$data->deksripsi}}</textarea>
+                                                                            ></textarea>
                                                                             <label for="floatingTextarea">Deskripsi Studio</label>
                                                                         </div>
                                                                         {{-- <div class="form-floating mb-3">
@@ -266,14 +269,16 @@
                                                                             <label for="floatingImage">Upload Image</label>
                                                                         </div> --}}
                                                                         <div class="form-floating mb-3">
-                                                                           <input type="text" name="id_studio" hidden value="{{$data->id}}">
+                                                                           <input type="text" name="id_studio" hidden value="{{$data->id_studio}}">
                                                                         </div>
                                                                         <div class="modal-footer">
                                                                             <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
                                                                             <button type="submit" class="btn btn-primary">Save changes</button>
-                                                                            </div>
+                                                                        </div>
                                                                     </form>
                                                                     {{-- akhit form edit --}}
+
+
                                                                 </div>
                                                             </div>
                                                             </div>
@@ -284,8 +289,9 @@
 
                                                 </div>
                                             </td>
-                                            @endforeach
                                         </tr>
+                                            @endforeach
+
                                     </tbody>
                                 </table>
                             </div>

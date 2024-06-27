@@ -62,13 +62,9 @@
             <div class="grup" style="background-image: url('assets/img/<?php echo $getDatas->image; ?>')">
             </div>
             <div style="flex-direction: column" class="box-grup d-flex p-3 gap-2 ">
-
                 <a href="{{url('/detail'.$getDatas->id)}}">
-                    <button  style="background-color: #969696" class="rounded-lg px-small py-1 border-none text-putih">Lihat Detail Studio</button>
+                    <button  style="background-color: #969696" class="button-detail rounded-lg px-small py-1 border-none text-putih">Lihat Detail Studio</button>
                 </a>
-
-
-                <button class="rounded-lg bg-merahTua text-putih border-none py-1">Pilih</button>
             </div>
         </div>
         @endforeach
