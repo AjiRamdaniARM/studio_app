@@ -58,7 +58,7 @@
     <div style="margin-top: 80px" class="d-flex flex-wrap position-relative justify-content-center align-items-center gap-5 ">
         @foreach ($getData as $getDatas )
         <div style="flex-direction: column;" class="block d-flex justify-content-center align-items-center ">
-            <h4 style="width:230px" class="text-center fw-bold">{{$getDatas->judul}}</h4>
+            <h4 style="width:230px; height:100px" class="text-center fw-bold">{{$getDatas->judul}}</h4>
             <div class="grup" style="background-image: url('assets/img/<?php echo $getDatas->image; ?>')">
             </div>
             <div style="flex-direction: column" class="box-grup d-flex p-3 gap-2 ">

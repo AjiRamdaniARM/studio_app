@@ -40,7 +40,12 @@
                                             <input type="file" name="image" class="form-control" id="floatingImage">
                                             <label for="floatingImage">Upload Image</label>
                                         </div>
+                                        <div class="form-floating mb-3">
+                                            <input type="text" class="form-control" id="floatingInput" name="maps" placeholder="Maps Studio">
+                                            <label for="floatingInput">Maps Studio (Ambil isi atribute src/link nya aja )</label>
+                                        </div>
                                         <button type="submit" class="btn btn-primary position-relative mt-2">Tambah Data</button>
+                                        <a href="{{asset('assets/images/maps.png')}}" class="btn btn-success position-relative mt-2 text-white">Contoh Maps Studio</a>
                                     </form>
 
 
@@ -79,14 +84,13 @@
                                                 <td>{{ $loop->iteration }}</td>
                                                 <td>{{$studios->judul}}</td>
                                                 <td><img style="width: 100px; border-radius:10px;" src="{{asset('assets/img/'.$studios->image)}}" alt=""></td>
-                                                <td>{{$studios->created_at}}</td>
-                                                <td>
+                                                <td>{{ $studios->created_at->format('F j, Y, g:i a') }}</td>
+                                                <td class="d-flex justify-content-center gap-2">
                                                     <form action="{{ url('studio/admin/delete/'.$studios->id) }}" >
                                                         @csrf
                                                         @method('DELETE')
                                                         <button class="btn bg-danger text-white rounded" type="submit">Delete</button>
                                                     </form>
-                                                    <br>
                                                         <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#staticBackdrop{{$studios->id}}">Edit</button>
                                                         {{-- modal button --}}
                                                         <div class="modal fade" id="staticBackdrop{{$studios->id}}" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">

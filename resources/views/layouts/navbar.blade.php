@@ -1,12 +1,12 @@
 <nav class="nav shadow-sm">
     <div class="navbar-brand body-logo d-flex justify-content-center align-items-center gap-3">
         <a href="{{url('/')}}">
-            <img style="width: 50px" src="assets/img/logo.png" alt="logo_studio">
+            <img style="width: 30%" src="{{asset('assets/images/StudioBook.png')}}" alt="logo_studio">
         </a>
-            <div class="fw-bold">STUDIO <span class="text-danger ">BOOKING</span></div>
+            {{-- <div class="fw-bold">STUDIO <span class="text-danger ">BOOKING</span></div> --}}
 
     </div>
-    <ul class="d-flex gap-5 inter-bold  ">
+    <ul class="d-flex gap-5 position-relative  inter-bold  " style="right: 200px">
         <li><a class="icon-link-hover link-dark" href="{{url('/')}}">Home</a> </li>
         <li><a class="icon-link-hover link-dark" href="#photo">Photo Studio</a></li>
         <li><a class="icon-link-hover link-dark" href="#location">Location</a></li>

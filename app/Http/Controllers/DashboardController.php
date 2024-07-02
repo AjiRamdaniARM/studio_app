@@ -2,10 +2,13 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\ImageProduks;
+use App\Models\Produks;
 use App\Models\tempatStudio;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
 
 class DashboardController extends Controller
@@ -58,4 +61,12 @@ class DashboardController extends Controller
 
         return redirect()->back()->with('success', 'User added successfully.');
     }
+
+    public function imageProduks ($id) {
+         $user = Auth::user();
+         $produk = Produks::where('id', $id)->first();
+         $image = ImageProduks::where('id_produk', $id)->get();
+         return view('dashboard.html.image_produks.index' , compact('user','produk','image')  );
+    }
+
 }

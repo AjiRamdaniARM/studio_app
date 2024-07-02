@@ -18,18 +18,11 @@
         </div>
         <div class="container py-4">
             <div class="row row-cols-4">
+                @foreach ($image as $images )
                 <div class="col">
-                    <img src="https://images.hdqwalls.com/wallpapers/beautiful-model-photoshoot-zi.jpg" style="width:100%" alt="">
+                    <img src="{{asset('assets/img/'.$images->file)}}" class="rounded" style="width:100%" alt="">
                 </div>
-                <div class="col">
-                    <img src="https://images.hdqwalls.com/wallpapers/beautiful-model-photoshoot-zi.jpg" style="width:100%" alt="">
-                </div>
-                <div class="col">
-                    <img src="https://images.hdqwalls.com/wallpapers/beautiful-model-photoshoot-zi.jpg" style="width:100%" alt="">
-                </div>
-                <div class="col">
-                    <img src="https://images.hdqwalls.com/wallpapers/beautiful-model-photoshoot-zi.jpg" style="width:100%" alt="">
-                </div>
+                @endforeach
 
             </div>
         </div>

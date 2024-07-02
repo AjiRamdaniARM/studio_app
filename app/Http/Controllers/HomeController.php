@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\ImageProduks;
 use App\Models\Produks;
 use App\Models\Studio;
 use App\Models\tempatStudio;
@@ -35,7 +36,9 @@ class HomeController extends Controller
         ->select('tempat_studios.*', 'studios.*', 'tempat_studios.judul as judulStudios')
         ->first();
 
-        return view('user.informasiStudio',compact('data','getData'));
+        $image = ImageProduks::where('id_produk', $id)->get();
+
+        return view('user.informasiStudio',compact('data','getData','image'));
     }
 
 }

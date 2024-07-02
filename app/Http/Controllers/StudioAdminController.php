@@ -15,7 +15,7 @@ class StudioAdminController extends Controller
     public function index() {
         $user = Auth::user();
         $data = User::all();
-        $studio = tempatStudio::all();
+        $studio = tempatStudio::where('id_user',$user->id)->get();
         return view('dashboard.html.studio.index', compact('user', 'data','studio'));
     }
 
@@ -47,9 +47,12 @@ class StudioAdminController extends Controller
             $image->move(public_path('assets/img'), $imageName);
 
         // Save the data to the database
+        $user = Auth::id();
         $studio = new tempatStudio();
         $studio->judul = $request->input('judul');
         $studio->image = $imageName; // Save the image name in the database
+        $studio->id_user = $user; // Save the image name in the database
+        $studio->maps = $request->input('maps'); // Save the image name in the database
         $studio -> save();
         return redirect()->back()->with('success', 'Data has been added successfully');
     }

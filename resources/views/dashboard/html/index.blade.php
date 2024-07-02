@@ -185,13 +185,13 @@ p {
                     <a class="navbar-brand" href="{{url('/')}}">
                         <!-- Logo icon -->
                         <b class="logo-icon">
-                            <img width="30" src="{{asset('assets/img/logo.png')}}" alt="homepage"  />
+                            <img width="100%" src="{{asset('assets/images/StudioBook.png')}}" alt="homepage"  />
                         </b>
                         <!--End Logo icon -->
                         <!-- Logo text -->
-                        <span class="logo-text">
+                        {{-- <span class="logo-text">
                             <div class="fw-bold">STUDIO <span class="text-danger ">BOOKING</span></div>
-                        </span>
+                        </span> --}}
                     </a>
                     <!-- ============================================================== -->
                     <!-- End Logo -->
@@ -273,6 +273,9 @@ p {
                         <li class="sidebar-item"> <a class="sidebar-link waves-effect waves-dark sidebar-link"
                                 href="{{route('detail.studio')}}" aria-expanded="false"><i class="mdi mdi-border-all"></i><span
                                     class="hide-menu">Detail Studio</span></a></li>
+                        {{-- <li class="sidebar-item"> <a class="sidebar-link waves-effect waves-dark sidebar-link"
+                                href="{{url('studio/admin/imageProduks')}}" aria-expanded="false"><i class="mdi mdi-border-all"></i><span
+                                    class="hide-menu">Image Produks</span></a></li> --}}
                                     @endif
 
                                     @if(Auth::check() && Auth::user()->role == 'superadmin')

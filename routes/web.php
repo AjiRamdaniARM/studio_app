@@ -36,7 +36,10 @@ Route::middleware([SuperadminMiddleware::class])->group(function () {
 
 
 Route::middleware(['auth','verified'])->group(function () {
+    Route::get('data/{id}', [DashboardController::class , 'imageProduks']);
+    Route::get('data/delete/{id}', [DetailStudioController::class , 'deleteImage']);
     Route::post('detail/studio/image', [DetailStudioController::class, 'image'])->name('image.upload');
+    Route::post('detail/post', [DetailStudioController::class, 'produks'])->name('image.produks');
     Route::get('detail/studio/data/{id}', [DetailStudioController::class, 'detail'])->name('data.detail');
     Route::get('detail/studio/data/delete/{id}', [DetailStudioController::class, 'delete'])->name('delete.detail');
     Route::post('detail/studio/data/{id}', [DetailStudioController::class, 'updatePost'])->name('data.update');

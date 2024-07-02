@@ -123,7 +123,6 @@
 
             </div>
         </div>
-
         <div class="row">
             <div class="col-12">
                 <div class="card">
@@ -178,6 +177,8 @@
 
             </div>
         </div>
+
+
         @if (session('success'))
         <div class="alert alert-success" role="alert">
             {{ session('success') }}
@@ -189,7 +190,7 @@
                 <div class="col-12">
                     <div class="card">
                         <div class="card-body">
-                            <h4 class="card-title">Data Image</h4>
+                            <h4 class="card-title">Data Produks</h4>
                             <h6 class="card-title m-t-40"><i
                                     class="m-r-5 font-18 mdi mdi-numeric-1-box-multiple-outline"></i>
                                 </h6>
@@ -201,6 +202,7 @@
                                             <th scope="col">Nama Produk</th>
                                             <th scope="col">Harga Produk</th>
                                             <th scope="col">Image</th>
+                                            <th scope="col">ImageProduk</th>
                                             <th scope="col">Aksi</th>
                                         </tr>
                                     </thead>
@@ -214,9 +216,11 @@
                                                 <img width="100" src="{{asset('assets/img/'.$data->foto_produk)}}" alt="">
                                             </td>
                                             <td>
-                                                <div class="grup flex justify-center items-center ">
+                                                <a href="{{url('/data/'.$data->id)}}" class="btn btn-primary">Detail</a>
+                                            </td>
+                                            <td>
+                                                <div class="grup d-flex justify-content-center align-items-center gap-3 ">
                                                     <button type="button" data-bs-toggle="modal" tabindex="-1" data-bs-target="#exampleModal{{$data->id}}" class="btn btn-primary" aria-hidden="true">Edit</button>
-
 
                                                         <form class="py-2" action="{{ route('delete.detail', ['id' => $data->id]) }}">
                                                             @csrf
@@ -256,14 +260,10 @@
                                                                             </div>
                                                                         </div>
                                                                         <div class="form-floating ">
-                                                                            <textarea
-                                                                            class="form-control"
-                                                                            name="deskripsi_produk"
-                                                                            placeholder="Leave a comment here"
-                                                                            id="floatingTextarea"
-                                                                            ></textarea>
+                                                                            <textarea class="form-control" name="deskripsi_produk" placeholder="Leave a comment here" id="floatingTextarea">{{$data->deksripsi}}</textarea>
                                                                             <label for="floatingTextarea">Deskripsi Studio</label>
                                                                         </div>
+
                                                                         {{-- <div class="form-floating mb-3">
                                                                             <input type="file" name="file" class="form-control" id="floatingImage">
                                                                             <label for="floatingImage">Upload Image</label>
@@ -302,6 +302,8 @@
             </div>
 
         </div>
+
+
     </div>
     </div>
 

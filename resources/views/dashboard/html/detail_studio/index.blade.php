@@ -31,30 +31,36 @@
                                 @csrf
                                 <div class="row">
                                     <div class="form-floating mb-3 col-md-6">
-                                        <select class="form-select py-3 rounded" id="floatingSelectGrid" name="studio">
-                                            <option selected>Select Data Studio</option>
-                                            @foreach ($datas as $data )
-                                            <option value="{{$data->id}}">{{$data->judul}}</option>
+                                        @php
+                                            // Array atau koleksi judul yang sudah terdaftar di database
+                                            $registeredJudul = App\Models\tempatStudio::pluck('judul')->toArray();
+                                        @endphp
+                                        <select class="form-select py-3 rounded" id="floatingSelectGrid" name="studio" required>
+                                            <option value="">Select Studio</option>
+                                             @foreach ($datas as $data)
+                                            {{-- @if (!in_array($data->judul, $registeredJudul)) --}}
+                                                <option value="{{ $data->id }}">{{ $data->judul }}</option>
+                                            {{-- @endif --}}
                                             @endforeach
                                           </select>
 
                                     </div>
                                     <div class=" mb-3 col-md-6">
-                                        <input type="text" class="form-control py-3 rounded" id="floatingInput2" name="nomor" placeholder="Nomor Telephone">
+                                        <input type="text" class="form-control py-3 rounded" id="floatingInput2" name="nomor" placeholder="Nomor Telephone" required>
                                     </div>
                                 </div>
                                 <div class="row">
 
                                     <div class=" mb-3 col-md-6">
-                                        <input type="text" class="form-control py-3 rounded" id="floatingInput2" name="instagram" placeholder="@nama akun Instagram">
+                                        <input type="text" class="form-control py-3 rounded" id="floatingInput2" name="instagram" placeholder="@nama akun Instagram" required>
                                     </div>
                                     <div class=" mb-3 col-md-6">
-                                        <input type="text" class="form-control py-3 rounded" id="floatingInput2" name="alamat" placeholder="Alamat">
+                                        <input type="text" class="form-control py-3 rounded" id="floatingInput2" name="alamat" placeholder="Alamat" required>
                                     </div>
                                 </div>
 
                                 <div class="form-floating ">
-                                    <textarea class="form-control" ty name="deskripsi" placeholder="Leave a comment here" id="floatingTextarea"></textarea>
+                                    <textarea class="form-control" name="deskripsi" placeholder="Leave a comment here" id="floatingTextarea" required></textarea>
                                     <label for="floatingTextarea">Deskripsi Studio</label>
                                   </div>
                                   <br>
@@ -95,9 +101,6 @@
                                 </div> --}}
                                 <button type="submit" class="btn btn-primary position-relative mt-2">Tambah Data</button>
                             </form>
-
-
-
                         </div>
                     </div>
 
@@ -119,7 +122,7 @@
             <div class="col-12">
                 <div class="card">
                     <div class="card-body">
-                        <h4 class="card-title">Data Table Studio</h4>
+                        <h4 class="card-title">Data Table Detail Studio</h4>
                         <h6 class="card-title m-t-40"><i
                                 class="m-r-5 font-18 mdi mdi-numeric-1-box-multiple-outline"></i>
                             </h6>
@@ -211,7 +214,8 @@
                         '<td>' + response.data.telepone + '</td>' +
                         '<td>' + response.data.sosial + '</td>' +
                         '<td>' + response.data.alamat + '</td>' +
-                        '<td><button class="btn bg-denger text-white rounded">Detail</button></td>' +
+                        '<td><button onclick=" window.location.reload();" class="btn bg-denger text-white rounded">Detail</button></td>' +
+                        '<td><button  onclick=" window.location.reload();" class="btn bg-denger text-white rounded">Delete</button></td>' +
                         '</tr>';
 
                     $('#studioTable tbody').append(newRow);

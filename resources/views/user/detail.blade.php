@@ -125,7 +125,7 @@
  </section>
 
 <section class="container">
-    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d63374.292703118204!2d107.60195797312115!3d-6.903362472292821!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e68e6398252477f%3A0x146a1f93d3e815b2!2sBandung%2C%20Kota%20Bandung%2C%20Jawa%20Barat!5e0!3m2!1sid!2sid!4v1719497698061!5m2!1sid!2sid" width="100%"  style="border:0; height:20em" allowfullscreen="" class="rounded" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+    <iframe src="{{$get->maps}}" width="100%"  style="border:0; height:20em" allowfullscreen="" class="rounded" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
 </section>
 
 
